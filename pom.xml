@@ -20,9 +20,23 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.10.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.10.0</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
-
             <!-- Java compiler -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -31,6 +45,13 @@
                 <configuration>
                     <release>${maven.compiler.release}</release>
                 </configuration>
+            </plugin>
+
+            <!-- Surefire for running tests -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.1.2</version>
             </plugin>
 
             <!-- Make it runnable from the command line -->
@@ -42,13 +63,12 @@
                     <archive>
                         <manifest>
                             <mainClass>
-                                com.example.xmlvalidator.SaxValidationApp
+                                de.rappsilberlab.mzidvalidator.SaxValidationApp
                             </mainClass>
                         </manifest>
                     </archive>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 

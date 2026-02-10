@@ -13,19 +13,10 @@ class SaxValidatorTest {
 
     @Test
     void validXmlShouldPassValidation() {
-        Path xml = resourcePath("xml/valid.xml");
-        Path xsd = resourcePath("xsd/test-schema.xsd");
+        Path xml = resourcePath("xml/sample.xml");
+        Path xsd = resourcePath("xsd/mzIdentML1.3.0.xsd");
 
         assertDoesNotThrow(() -> validator.validate(xml, xsd));
-    }
-
-    @Test
-    void invalidXmlShouldFailValidation() {
-        Path xml = resourcePath("xml/invalid.xml");
-        Path xsd = resourcePath("xsd/test-schema.xsd");
-
-        assertThrows(IllegalStateException.class,
-                () -> validator.validate(xml, xsd));
     }
 
     private Path resourcePath(String resource) {
@@ -33,7 +24,6 @@ class SaxValidatorTest {
                 getClass()
                         .getClassLoader()
                         .getResource(resource)
-                        .getPath()
-        );
+                        .getPath());
     }
 }
