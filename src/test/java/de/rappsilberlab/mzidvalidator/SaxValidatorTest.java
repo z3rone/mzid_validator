@@ -14,7 +14,7 @@ class SaxValidatorTest {
     @Test
     void validXmlShouldPassValidation() {
         Path xml = resourcePath("xml/sample.xml");
-        Path xsd = resourcePath("xsd/mzIdentML1.3.0.xsd");
+        Path xsd = resourcePath("xsd/mzIdentML1.2.0.xsd");
 
         assertDoesNotThrow(() -> validator.validate(xml, xsd));
     }
